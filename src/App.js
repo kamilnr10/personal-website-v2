@@ -7,8 +7,8 @@ import Hero from "./components/Hero/Hero";
 function App() {
   return (
     <MainTemplate>
-      <Navigation />
       <Hero />
+      <Navigation />
     </MainTemplate>
   );
 }
