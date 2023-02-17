@@ -25,7 +25,7 @@ module.exports = {
         },
       },
       animation: {
-        wiggle: "wiggle 2s ease-in-out infinite",
+        wiggle: "wiggle 3s ease-in-out infinite",
       },
     },
   },
