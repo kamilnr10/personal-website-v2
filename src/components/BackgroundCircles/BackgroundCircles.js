@@ -6,16 +6,16 @@ import { useInView } from "react-intersection-observer";
 const styles = {
   circleWrapper: "relative flex justify-center items-center",
   firstCircle:
-    "absolute border border-[#333333] rounded-full h-[160px] w-[160px] animate-ping",
+    "absolute border border-[#333333] rounded-full h-[160px] w-[160px] animate-ping md:h-[240px] md:w-[240px]",
   secondCircle:
-    "absolute border border-[#333333] rounded-full h-[170px] w-[170px] border-2 border-[#00CCBB]",
+    "absolute border border-[#333333] rounded-full h-[170px] w-[170px] md:h-[250px] md:w-[250px]",
   thirdCircle:
-    "absolute border border-[#333333] rounded-full h-[200px] w-[200px]",
+    "absolute border border-[#333333] rounded-full h-[200px] w-[200px] md:h-[270px] md:w-[270px]",
   fourthCircle:
-    "absolute border border-[#00CCBB] rounded-full h-[220px] w-[220px] animate-pulse opacity-20",
+    "absolute border border-[#00CCBB] rounded-full h-[220px] w-[220px] animate-pulse opacity-20 md:h-[280px] md:w-[280px]",
   fifthCircle:
-    "absolute border border-[#333333] rounded-full h-[260px] w-[260px]",
-  avatarImg: "absolute rounded-full",
+    "absolute border border-[#333333] rounded-full h-[260px] w-[260px] md:h-[310px] md:w-[310px]",
+  avatarImg: "absolute rounded-full border-2 border-[#00CCBB]",
 };
 
 const BackgroundCircles = () => {
@@ -25,7 +25,7 @@ const BackgroundCircles = () => {
   useEffect(() => {
     if (inView) {
       controls.start({
-        scale: [1, 1.3, 1.8, 2, 1],
+        scale: [1, 1.2, 1.6, 1.8, 1],
         opacity: [0.1, 0.2, 0.4, 0.8, 0.5, 1.0],
         borderRadius: ["20%", "20%", "50%", "80%", "20%"],
         transition: { duration: 3 },

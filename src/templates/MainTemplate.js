@@ -1,5 +1,6 @@
 import React from "react";
 import "../components/Hero/Hero.css";
+import Navigation from "../components/Navigation/Navigation";
 
 const MainTemplate = ({ children }) => {
   return (
@@ -8,7 +9,10 @@ const MainTemplate = ({ children }) => {
         <div className="stars"></div>
         <div className="stars2"></div>
         <div className="stars3"></div>
-        <div className="max-w-[1240px] mx-auto mt-20">{children}</div>
+        <div className="max-w-[1240px] mx-auto mt-20">
+          {children}
+          <Navigation />
+        </div>
       </div>
     </div>
   );

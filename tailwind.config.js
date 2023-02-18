@@ -23,6 +23,10 @@ module.exports = {
           "0%, 100%": { transform: "translateX(4px)" },
           "50%": { transform: "translateX(2px)" },
         },
+        wiggleReverse: {
+          "0%, 100%": { transform: "translateX(-4px)" },
+          "50%": { transform: "translateX(-2px)" },
+        },
       },
       animation: {
         wiggle: "wiggle 3s ease-in-out infinite",

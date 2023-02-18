@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Hero.css";
 import splash from "../../assets/splash.png";
 import hero from "../../assets/hero.png";
@@ -12,40 +12,7 @@ import arrowDown from "react-useanimations/lib/arrowDown";
 import face from "../../assets/face1.png";
 import BackgroundCircles from "../BackgroundCircles/BackgroundCircles";
 import { useInView } from "react-intersection-observer";
-
-// const styles = {
-//   wrapperHero: "mt-10",
-//   nameSpan: "text-secondaryText",
-//   wordsSpan: "text-secondaryText font-bold",
-//   jobName: "text-xs font-light tracking-[.75em] uppercase",
-//   imageWrapper: "relative w-full flex justify-center mt-10",
-//   splashImg: "w-96 h-96",
-//   avatarImg: "absolute w-64 animate-wiggle",
-//   arrowDown: "h-14 flex justify-center items-center",
-//   aboutTitle: "mt-10 text-center font-light tracking-[.75em]",
-//   circlesWrapper: "w-full h-96 mx-auto rounded-full",
-//   iconsWrapper: "flex justify-center my-2",
-//   aboutText: "text-sm",
-// };
-
-const styles = {
-  wrapper: "mt-10",
-  heroScreen:
-    "relative h-[calc(100vh-125px)] flex flex-col flex-1 justify-between",
-  mainText: "h-28 text-md",
-  nameSpan: "text-secondaryText",
-  wordsSpan: "text-secondaryText font-bold",
-  jobName: "text-[13px] font-light tracking-[.75em] uppercase",
-  imageWrapper: "relative w-full flex justify-center items-center mt-10",
-  splashImg: "absolute w-96 h-96",
-  avatarImg: "absolute w-64 animate-wiggle",
-  arrowDown: "h-14 flex justify-center items-center",
-  aboutTitle: "mt-10 text-center font-light tracking-[.75em]",
-  circlesWrapper: "w-full h-96 mx-auto rounded-full",
-  iconsWrapper: "h-10 flex justify-center my-5",
-  aboutText: "pb-10 text-sm",
-  aboutMeSection: "min-h-screen",
-};
+import { styles } from "./Hero.styles";
 
 const Hero = () => {
   const [text, count] = useTypewriter({
@@ -57,6 +24,10 @@ const Hero = () => {
     loop: true,
     delaySpeed: 2000,
   });
+  const [windowSize, setWindowSize] = useState([
+    window.innerWidth,
+    window.innerHeight,
+  ]);
   const aboutSection = useRef(null);
 
   const scrollDown = () => {
@@ -65,6 +36,18 @@ const Hero = () => {
       behavior: "smooth",
     });
   };
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize([window.innerWidth, window.innerHeight]);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  });
 
   return (
     <div className={styles.wrapper}>
@@ -114,7 +97,7 @@ const Hero = () => {
         >
           <UseAnimations
             animation={arrowDown}
-            size={40}
+            size={windowSize[0] > 768 ? 70 : 40}
             strokeColor="#00df9a"
           />
         </div>
@@ -124,7 +107,7 @@ const Hero = () => {
         <div className={styles.circlesWrapper}>
           <BackgroundCircles />
         </div>
-        <div className="">
+        <div className="md:flex md:flex-col md:items-center">
           <div className={styles.iconsWrapper}>
             <UseAnimations
               animation={github}
